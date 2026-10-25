@@ -2,17 +2,12 @@
 
 :root {
   font-family: Inter, Arial, sans-serif;
-  color: #f5eee8;
-  background: #17100c;
+  color: #f1f5f9;
+  background: #050a14;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
-  --accent: #ff6a1a;
-  --accent-light: #ffad70;
-  --surface: #21150f;
-  --muted: #c0ada0;
 }
 
 * {
@@ -21,20 +16,17 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 100px;
 }
 
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
-
-  background:
-    radial-gradient(ellipse at 75% 20%, #8b350f55, transparent 42%),
-    radial-gradient(ellipse at 15% 75%, #57250f55, transparent 40%), #17100c;
+  background: #050a14;
 }
 
 button,
+a,
 input,
 textarea {
   font: inherit;
@@ -55,15 +47,174 @@ button {
 }
 
 ::selection {
-  color: #17100c;
-  background: var(--accent);
+  color: #ffffff;
+  background: #1677ff;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* Home background */
+.home-page {
+  isolation: isolate;
+  min-height: calc(100vh - 80px);
+  color: #f1f5f9;
+  background:
+    radial-gradient(
+      ellipse at 50% -15%,
+      rgba(65, 145, 255, 0.28),
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 90% 45%,
+      rgba(13, 75, 160, 0.14),
+      transparent 45%
+    ),
+    linear-gradient(135deg, #030711 0%, #07152b 52%, #030812 100%);
+}
+
+.home-top-glow {
+  position: absolute;
+  z-index: 0;
+  top: -180px;
+  left: 50%;
+  width: min(850px, 110vw);
+  height: 380px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(72, 145, 255, 0.22);
+  filter: blur(100px);
+  pointer-events: none;
+}
+
+.home-blue-glow {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: #bde5ff;
+  box-shadow:
+    0 0 15px #60a5fa,
+    0 0 45px #3b82f6,
+    0 0 90px #2563eb;
+  pointer-events: none;
+}
+
+/* Tiny white stars */
+.home-stars {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.home-star {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  background: #ffffff;
+  opacity: 0.75;
+  box-shadow: 0 0 7px rgba(219, 239, 255, 0.9);
+}
+
+.home-star:nth-child(3n) {
+  opacity: 0.45;
+}
+
+.home-star:nth-child(4n) {
+  box-shadow:
+    0 0 5px #ffffff,
+    0 0 12px rgba(96, 165, 250, 0.8);
+}
+
+/* Portrait */
+.home-portrait-glow {
+  position: absolute;
+  width: 75%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(37, 99, 235, 0.3);
+  filter: blur(65px);
+  pointer-events: none;
+}
+
+.home-portrait-frame {
+  box-shadow:
+    0 0 12px rgba(191, 219, 254, 0.65),
+    0 0 35px rgba(59, 130, 246, 0.5),
+    0 0 85px rgba(37, 99, 235, 0.28);
+}
+
+.home-portrait-frame img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.home-orbit {
+  position: absolute;
+  border: 1px solid rgba(147, 197, 253, 0.25);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.home-orbit-one {
+  width: 115%;
+  aspect-ratio: 1;
+}
+
+.home-orbit-two {
+  width: 130%;
+  aspect-ratio: 1;
+  border-color: rgba(255, 255, 255, 0.09);
+}
+
+.home-name-glow {
+  text-shadow: 0 0 28px rgba(56, 189, 248, 0.28);
+}
+
+.home-primary-button {
+  background: linear-gradient(135deg, #1677ff, #38bdf8);
+  box-shadow: 0 0 24px rgba(37, 99, 235, 0.25);
+}
+
+.home-primary-button:hover {
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.4);
+}
+
+@media (max-width: 640px) {
+  .home-page {
+    background:
+      radial-gradient(
+        ellipse at 50% 0%,
+        rgba(65, 145, 255, 0.22),
+        transparent 42%
+      ),
+      linear-gradient(160deg, #030711, #08162c 55%, #030812);
+  }
+
+  .home-portrait-glow {
+    filter: blur(45px);
+  }
+
+  .home-orbit-two {
+    width: 120%;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   *,
   *::before,
   *::after {
-    scroll-behavior: auto !important;
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
